@@ -2,6 +2,7 @@ package Collections.MapTut.InternalStructureOfHashMap;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class HashCodeAndEqualsMethod {
     public static void main(String[] args) {
@@ -53,7 +54,20 @@ class Student{
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if(this == obj)
+        {
+            return true;
+        }
+        if(obj == null)
+        {
+            return false;
+        }
+        if(getClass() != obj.getClass())
+        {
+            return false;
+        }
+        Student other = (Student) obj;
+        return id == other.getId() && Objects.equals(name, other.getName());
     }
 
     @Override
